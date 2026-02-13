@@ -205,3 +205,12 @@ missing-transmute-annotations = "allow" # we always do implicit transmutes
 # }}}
 
 # vim: foldmethod=marker
+
+[package.metadata.deb]
+assets = [
+    ["target/release/fht-compositor", "usr/bin/", "755"],
+    ["res/systemd/fht-compositor-session", "usr/bin/", "755"],
+    ["res/systemd/fht-compositor.desktop", "usr/share/wayland-sessions/", "644"],
+    ["res/systemd/fht-compositor.service", "etc/systemd/user/", "644"],
+    ["res/systemd/fht-compositor-shutdown.target", "etc/systemd/user/", "644"]
+]
