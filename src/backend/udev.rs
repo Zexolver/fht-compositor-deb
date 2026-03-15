@@ -1,3 +1,4 @@
+use std::ffi::c_char;
 use std::collections::HashMap;
 use std::io;
 use std::path::Path;
@@ -1968,7 +1969,7 @@ fn get_custom_mode(width: u16, height: u16, refresh: Option<f64>) -> Option<drm:
     let name = unsafe {
         let mut name = format!("{width}x{height}@{}", refresh.unwrap_or(60.0)).into_bytes();
         name.resize(32, b' ');
-        let name = &*(name.as_slice() as *const [u8] as *const [u8]);
+        let name = &*(name.as_slice() as *const [u8] as *const [c_char]);
         name.try_into().ok()?
     };
     let mode_info = drm_ffi::drm_mode_modeinfo {
